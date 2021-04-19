@@ -10,8 +10,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>logo.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/Barteco/Testime</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Barteco/Testime</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Barteco/Redcache</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Barteco/Redcache</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageOutputPath>$(SolutionDir)/artifacts</PackageOutputPath>
   </PropertyGroup>

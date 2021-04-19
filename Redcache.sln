@@ -20,7 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{94485132-00FD-4C43-84D7-4358F5C70915}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\deploy.yml = .github\workflows\deploy.yml
+		.github\workflows\push.yml = .github\workflows\push.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache", "src\Redcache\Redcache.csproj", "{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}"
