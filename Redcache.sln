@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{41CAB056-DF34-4AA0-972E-ADEB96A3B4CF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{B4F65A9E-3428-45D0-90C9-011C621D6556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.AspNetCore", "src\Redcache.AspNetCore\Redcache.AspNetCore.csproj", "{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{FA529165-0321-4805-9976-977D1C62AF06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{94485132-00FD-4C43-84D7-4358F5C70915}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\deploy.yml = .github\workflows\deploy.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{FA529165-0321-4805-9976-977D1C62AF06} = {41CAB056-DF34-4AA0-972E-ADEB96A3B4CF}
+		{94485132-00FD-4C43-84D7-4358F5C70915} = {FA529165-0321-4805-9976-977D1C62AF06}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {592FC598-8233-4133-B1A4-3F0B66C0EAC1}
+	EndGlobalSection
+EndGlobal
