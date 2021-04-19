@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{B4F65A9E-3428-45D0-90C9-011C621D6556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.AspNetCore", "src\Redcache.AspNetCore\Redcache.AspNetCore.csproj", "{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{FA529165-0321-4805-9976-977D1C62AF06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{94485132-00FD-4C43-84D7-4358F5C70915}"
@@ -24,24 +22,56 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\deploy.yml = .github\workflows\deploy.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache", "src\Redcache\Redcache.csproj", "{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.Serialization.SystemTextJson", "src\Redcache.Serialization.SystemTextJson\Redcache.Serialization.SystemTextJson.csproj", "{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.Abstractions", "src\Redcache.Abstractions\Redcache.Abstractions.csproj", "{80DA793F-601F-43D3-B5CD-605A2E5828C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{66BEB7AF-F6D2-43D7-A214-567D2821BF3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.Tests", "test\Redcache.Tests\Redcache.Tests.csproj", "{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redcache.Serialization.Protobuf", "src\Redcache.Serialization.Protobuf\Redcache.Serialization.Protobuf.csproj", "{E19B4AED-7181-46A9-B1A5-596717D10A11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DA793F-601F-43D3-B5CD-605A2E5828C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DA793F-601F-43D3-B5CD-605A2E5828C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DA793F-601F-43D3-B5CD-605A2E5828C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DA793F-601F-43D3-B5CD-605A2E5828C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{28F538ED-B2CC-4A84-927B-0FACEB2D37E8} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 		{FA529165-0321-4805-9976-977D1C62AF06} = {41CAB056-DF34-4AA0-972E-ADEB96A3B4CF}
 		{94485132-00FD-4C43-84D7-4358F5C70915} = {FA529165-0321-4805-9976-977D1C62AF06}
+		{28DB43DA-F012-461C-AD4D-CF0406F4EE3A} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{80DA793F-601F-43D3-B5CD-605A2E5828C4} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF} = {66BEB7AF-F6D2-43D7-A214-567D2821BF3C}
+		{E19B4AED-7181-46A9-B1A5-596717D10A11} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {592FC598-8233-4133-B1A4-3F0B66C0EAC1}
