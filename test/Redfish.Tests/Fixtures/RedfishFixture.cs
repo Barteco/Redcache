@@ -5,11 +5,11 @@ using System;
 
 namespace Redfish.Tests.Fixtures
 {
-    public class RedcacheFixture : IDisposable
+    public class RedfishFixture : IDisposable
     {
         public IConnectionMultiplexer Multiplexer { get; }
 
-        public RedcacheFixture()
+        public RedfishFixture()
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var redisOptions = config.GetSection("Redis").Get<RedfishOptions>();

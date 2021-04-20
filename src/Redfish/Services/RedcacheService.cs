@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Redfish
+namespace Redfish.Services
 {
-    class RedcacheService : IRedcache
+    internal class RedcacheService : IRedcache
     {
         private readonly IConnectionMultiplexer _multiplexer;
         private readonly IRedfishSerializer _serializer;

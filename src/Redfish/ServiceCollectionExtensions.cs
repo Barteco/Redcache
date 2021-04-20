@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Redfish.Internal;
+using Redfish.Services;
 using StackExchange.Redis;
 
 namespace Redfish

@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Redfish.Serialization.Protobuf;
 using Redfish.Serialization.SystemTextJson;
+using Redfish.Services;
 using Redfish.Tests.Fakes;
 using Redfish.Tests.Fixtures;
 using System;
@@ -10,14 +11,14 @@ using Xunit;
 
 namespace Redfish.Tests
 {
-    public class RedcacheServiceTests : IClassFixture<RedcacheFixture>
+    public class RedcacheServiceTests : IClassFixture<RedfishFixture>
     {
-        private readonly RedcacheFixture _fixture;
+        private readonly RedfishFixture _fixture;
         private readonly PersonFaker _faker;
         private readonly SystemTextJsonSerializer _jsonSerializer;
         private readonly ProtobufSerializer _protobufSerializer;
 
-        public RedcacheServiceTests(RedcacheFixture fixture)
+        public RedcacheServiceTests(RedfishFixture fixture)
         {
             _fixture = fixture;
             _faker = new PersonFaker();
