@@ -23,5 +23,12 @@ namespace Redfish
 
             return builder;
         }
+
+        public static IRedfishServiceCollectionBuilder AddRedqueue(this IRedfishServiceCollectionBuilder builder)
+        {
+            builder.Services.AddScoped<IRedqueue, RedqueueService>();
+
+            return builder;
+        }
     }
 }
