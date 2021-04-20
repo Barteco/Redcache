@@ -7,11 +7,11 @@ namespace Redfish
 {
     public static class ServiceCollectionExtensions
     {
-        public static IRedfishServiceCollectionBuilder AddRedis(this IServiceCollection services, RedfishOptions redisOptions)
+        public static IRedfishServiceCollectionBuilder AddRedis(this IServiceCollection services, RedisOptions redisOptions)
         {
             var builder = new RedfishServiceCollectionBuilder(services);
 
-            var configurationOptions = RedfishOptionsBuilder.Build(redisOptions);
+            var configurationOptions = RedisOptionsBuilder.Build(redisOptions);
             builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configurationOptions));
 
             return builder;

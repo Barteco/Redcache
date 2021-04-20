@@ -1,6 +1,5 @@
 using FluentAssertions;
 using FluentAssertions.Extensions;
-using Redfish.Serialization.SystemTextJson;
 using Redfish.Services;
 using Redfish.Tests.Fixtures;
 using System;

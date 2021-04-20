@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Redfish.Serialization.SystemTextJson
+namespace Redfish
 {
     public static class ServiceCollectionRedisExtensions
     {

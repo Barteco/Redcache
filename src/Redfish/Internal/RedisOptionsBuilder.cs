@@ -2,9 +2,9 @@
 
 namespace Redfish.Internal
 {
-    internal static class RedfishOptionsBuilder
+    internal static class RedisOptionsBuilder
     {
-        public static ConfigurationOptions Build(RedfishOptions redisOptions)
+        public static ConfigurationOptions Build(RedisOptions redisOptions)
         {
             var configurationOptions = ConfigurationOptions.Parse(redisOptions.ConnectionString);
             configurationOptions.AllowAdmin = true;

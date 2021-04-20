@@ -1,7 +1,7 @@
 ﻿using StackExchange.Redis;
 using System.Text.Json;
 
-namespace Redfish.Serialization.SystemTextJson
+namespace Redfish
 {
     internal class SystemTextJsonSerializer : IRedfishSerializer
     {

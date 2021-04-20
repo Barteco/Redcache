@@ -12,8 +12,8 @@ namespace Redfish.Tests.Fixtures
         public RedfishFixture()
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var redisOptions = config.GetSection("Redis").Get<RedfishOptions>();
-            var configurationOptions = RedfishOptionsBuilder.Build(redisOptions);
+            var redisOptions = config.GetSection("Redis").Get<RedisOptions>();
+            var configurationOptions = RedisOptionsBuilder.Build(redisOptions);
             Multiplexer = ConnectionMultiplexer.Connect(configurationOptions);
         }
 

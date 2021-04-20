@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using System.IO;
 
-namespace Redfish.Serialization.Protobuf
+namespace Redfish
 {
     internal class ProtobufSerializer : IRedfishSerializer
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Redfish.Serialization.Protobuf
+namespace Redfish
 {
     public static class ServiceCollectionExtensions
     {

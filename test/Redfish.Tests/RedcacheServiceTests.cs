@@ -1,6 +1,4 @@
 using FluentAssertions;
-using Redfish.Serialization.Protobuf;
-using Redfish.Serialization.SystemTextJson;
 using Redfish.Services;
 using Redfish.Tests.Fakes;
 using Redfish.Tests.Fixtures;

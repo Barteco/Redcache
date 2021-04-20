@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Description>System.Text.Json serializer for Redfish toolkit</Description>
     <PackageTags>redis caching json serializer</PackageTags>
+    <RootNamespace>Redfish</RootNamespace>
   </PropertyGroup>
   
   <ItemGroup>
