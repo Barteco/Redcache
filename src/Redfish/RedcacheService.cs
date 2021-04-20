@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Redcache
+namespace Redfish
 {
     class RedcacheService : IRedcache
     {
         private readonly IConnectionMultiplexer _multiplexer;
-        private readonly IRedcacheSerializer _serializer;
+        private readonly IRedfishSerializer _serializer;
         private readonly IDatabase _database;
 
-        public RedcacheService(IConnectionMultiplexer multiplexer, IRedcacheSerializer serializer)
+        public RedcacheService(IConnectionMultiplexer multiplexer, IRedfishSerializer serializer)
         {
             _multiplexer = multiplexer;
             _serializer = serializer;

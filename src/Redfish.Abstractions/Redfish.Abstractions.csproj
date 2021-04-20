@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Redcache</RootNamespace>
-    <Description>Redcache caching service abstractions</Description>
-    <PackageTags>redis caching abstractions</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>Redfish</RootNamespace>
+    <Description>Abstractions for Redfish toolkit</Description>
+    <PackageTags>redis cache pubsub abstractions</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

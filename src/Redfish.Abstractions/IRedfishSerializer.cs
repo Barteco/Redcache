@@ -1,8 +1,8 @@
 ﻿using StackExchange.Redis;
 
-namespace Redcache
+namespace Redfish
 {
-    public interface IRedcacheSerializer
+    public interface IRedfishSerializer
     {
         RedisValue Serialize<TValue>(TValue value);
         TValue Deserialize<TValue>(RedisValue cached);

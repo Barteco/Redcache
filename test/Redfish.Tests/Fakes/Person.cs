@@ -1,7 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 
-namespace Redcache.Tests.Fakes
+namespace Redfish.Tests.Fakes
 {
     [ProtoContract]
     class Person

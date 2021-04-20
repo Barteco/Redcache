@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description>Protobuf serializer for Redcache caching service</Description>
+    <Description>Protobuf serializer for Redfish toolkit</Description>
     <PackageTags>redis caching protobuf serializer</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Redcache.Abstractions\Redcache.Abstractions.csproj" />
+    <ProjectReference Include="..\Redfish.Abstractions\Redfish.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

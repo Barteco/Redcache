@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description>System.Text.Json serializer for Redcache caching service</Description>
+    <Description>System.Text.Json serializer for Redfish toolkit</Description>
     <PackageTags>redis caching json serializer</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   
   <ItemGroup>
@@ -12,7 +11,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Redcache.Abstractions\Redcache.Abstractions.csproj" />
+    <ProjectReference Include="..\Redfish.Abstractions\Redfish.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

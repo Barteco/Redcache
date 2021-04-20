@@ -1,4 +1,4 @@
-﻿namespace Redcache
+﻿namespace Redfish
 {
     public sealed class Optional<T>
     {

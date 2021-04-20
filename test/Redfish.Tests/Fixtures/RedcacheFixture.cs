@@ -1,19 +1,19 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Redcache.Internal;
+using Redfish.Internal;
 using StackExchange.Redis;
 using System;
 
-namespace Redcache.Tests.Fixtures
+namespace Redfish.Tests.Fixtures
 {
-    public class RedisFixture : IDisposable
+    public class RedcacheFixture : IDisposable
     {
         public IConnectionMultiplexer Multiplexer { get; }
 
-        public RedisFixture()
+        public RedcacheFixture()
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var redisOptions = config.GetSection("Redis").Get<RedcacheOptions>();
-            var configurationOptions = ConfigurationOptionsBuilder.Build(redisOptions);
+            var redisOptions = config.GetSection("Redis").Get<RedfishOptions>();
+            var configurationOptions = RedfishOptionsBuilder.Build(redisOptions);
             Multiplexer = ConnectionMultiplexer.Connect(configurationOptions);
         }
 

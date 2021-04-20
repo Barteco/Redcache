@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Redcache
+namespace Redfish
 {
-    public interface IRedcacheServiceCollectionBuilder
+    public interface IRedfishServiceCollectionBuilder
     {
         public IServiceCollection Services { get; }
     }

@@ -1,9 +1,9 @@
 ﻿using StackExchange.Redis;
 using System.Text.Json;
 
-namespace Redcache.Serialization.SystemTextJson
+namespace Redfish.Serialization.SystemTextJson
 {
-    class SystemTextJsonSerializer : IRedcacheSerializer
+    class SystemTextJsonSerializer : IRedfishSerializer
     {
         public TValue Deserialize<TValue>(RedisValue cached)
         {

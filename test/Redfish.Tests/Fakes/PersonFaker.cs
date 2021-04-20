@@ -1,6 +1,6 @@
 ﻿using Bogus;
 
-namespace Redcache.Tests.Fakes
+namespace Redfish.Tests.Fakes
 {
     class PersonFaker
     {

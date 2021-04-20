@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Redcache.Abstractions\Redcache.Abstractions.csproj" />
-    <ProjectReference Include="..\..\src\Redcache.Serialization.Protobuf\Redcache.Serialization.Protobuf.csproj" />
-    <ProjectReference Include="..\..\src\Redcache.Serialization.SystemTextJson\Redcache.Serialization.SystemTextJson.csproj" />
-    <ProjectReference Include="..\..\src\Redcache\Redcache.csproj" />
+    <ProjectReference Include="..\..\src\Redfish.Abstractions\Redfish.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\Redfish.Serialization.Protobuf\Redfish.Serialization.Protobuf.csproj" />
+    <ProjectReference Include="..\..\src\Redfish.Serialization.SystemTextJson\Redfish.Serialization.SystemTextJson.csproj" />
+    <ProjectReference Include="..\..\src\Redfish\Redfish.csproj" />
   </ItemGroup>
 
   <ItemGroup>

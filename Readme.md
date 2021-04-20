@@ -1,3 +1,3 @@
-# Redcache
+# Redfish
 
-Redcache is an implementation of a caching service based on Redis key-value store
+Redfish is a strongly typed wrapper for Redis key-value store and pub-sub service, based on [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) library

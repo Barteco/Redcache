@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Description>Strongly typed toolkit for Redis caching and pub-sub service</Description>
+    <PackageTags>redis cache pubsub</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Redfish.Abstractions\Redfish.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

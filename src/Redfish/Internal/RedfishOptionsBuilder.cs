@@ -1,10 +1,10 @@
 ﻿using StackExchange.Redis;
 
-namespace Redcache.Internal
+namespace Redfish.Internal
 {
-    static class ConfigurationOptionsBuilder
+    internal static class RedfishOptionsBuilder
     {
-        public static ConfigurationOptions Build(RedcacheOptions redisOptions)
+        public static ConfigurationOptions Build(RedfishOptions redisOptions)
         {
             var configurationOptions = ConfigurationOptions.Parse(redisOptions.ConnectionString);
             configurationOptions.AllowAdmin = true;

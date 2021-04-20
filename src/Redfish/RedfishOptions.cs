@@ -1,6 +1,6 @@
-﻿namespace Redcache
+﻿namespace Redfish
 {
-    public class RedcacheOptions
+    public class RedfishOptions
     {
         public string ConnectionString { get; set; }
         public int DefaultDatabase { get; set; }

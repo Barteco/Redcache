@@ -2,9 +2,9 @@
 using StackExchange.Redis;
 using System.IO;
 
-namespace Redcache.Serialization.Protobuf
+namespace Redfish.Serialization.Protobuf
 {
-    class ProtobufSerializer : IRedcacheSerializer
+    class ProtobufSerializer : IRedfishSerializer
     {
         public TValue Deserialize<TValue>(RedisValue cached)
         {

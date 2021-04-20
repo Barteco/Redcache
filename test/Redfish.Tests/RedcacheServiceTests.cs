@@ -1,14 +1,14 @@
 using FluentAssertions;
-using Redcache.Serialization.Protobuf;
-using Redcache.Serialization.SystemTextJson;
-using Redcache.Tests.Fakes;
-using Redcache.Tests.Fixtures;
+using Redfish.Serialization.Protobuf;
+using Redfish.Serialization.SystemTextJson;
+using Redfish.Tests.Fakes;
+using Redfish.Tests.Fixtures;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Redcache.Tests
+namespace Redfish.Tests
 {
     public class RedcacheServiceTests : IClassFixture<RedcacheFixture>
     {
