@@ -40,7 +40,6 @@ namespace Redfish.Tests
             keyExists.Should().BeFalse();
         }
 
-
         [Fact]
         public async Task Exists_WhenAccessingNonexistentKey_ReturnsTrue()
         {
@@ -230,7 +229,7 @@ namespace Redfish.Tests
         }
 
         [Theory]
-        [InlineData(0, 4, new [] { 1, 2, 3, 4, 5 })]
+        [InlineData(0, 4, new[] { 1, 2, 3, 4, 5 })]
         [InlineData(5, 9, new[] { 6, 7, 8, 9, 10 })]
         [InlineData(96, 105, new[] { 97, 98, 99, 100 })]
         [InlineData(110, 120, new int[] { })]

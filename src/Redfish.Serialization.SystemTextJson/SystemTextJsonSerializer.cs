@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Redfish.Serialization.SystemTextJson
 {
-    class SystemTextJsonSerializer : IRedfishSerializer
+    internal class SystemTextJsonSerializer : IRedfishSerializer
     {
         public TValue Deserialize<TValue>(RedisValue cached)
         {

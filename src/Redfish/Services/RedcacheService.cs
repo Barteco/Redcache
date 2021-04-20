@@ -21,12 +21,12 @@ namespace Redfish.Services
 
         public async Task<bool> Exists(string key)
         {
-            return await _database.KeyExistsAsync(key);
+            return await _database.KeyExistsAsync(key).ConfigureAwait(false);
         }
 
         public async Task<Optional<T>> Get<T>(string key, TimeSpan? expiry = null)
         {
-            var cachedValue = await _database.StringGetAsync(key);
+            var cachedValue = await _database.StringGetAsync(key).ConfigureAwait(false);
             if (cachedValue.HasValue)
             {
                 return _serializer.Deserialize<T>(cachedValue);
@@ -36,14 +36,14 @@ namespace Redfish.Services
 
         public async Task<T> Get<T>(string key, Func<T> setter, TimeSpan? expiry = null)
         {
-            var cachedValue = await _database.StringGetAsync(key);
+            var cachedValue = await _database.StringGetAsync(key).ConfigureAwait(false);
             if (cachedValue.HasValue)
             {
                 return _serializer.Deserialize<T>(cachedValue);
             }
 
             var value = setter();
-            await Set(key, value, expiry);
+            await Set(key, value, expiry).ConfigureAwait(false);
             return value;
         }
 
@@ -57,7 +57,7 @@ namespace Redfish.Services
                 stop = range.Value.End.Value;
             }
 
-            var cachedList = await _database.ListRangeAsync(key, start, stop);
+            var cachedList = await _database.ListRangeAsync(key, start, stop).ConfigureAwait(false);
 
             var items = new List<T>();
 
@@ -73,29 +73,29 @@ namespace Redfish.Services
         public async Task AppendList<T>(string key, T value)
         {
             var serializedValue = _serializer.Serialize(value);
-            await _database.ListRightPushAsync(key, serializedValue);
+            await _database.ListRightPushAsync(key, serializedValue).ConfigureAwait(false);
         }
 
         public async Task AppendList<T>(string key, T[] values)
         {
             var serializedValues = values.Select(_serializer.Serialize).ToArray();
-            await _database.ListRightPushAsync(key, serializedValues);
+            await _database.ListRightPushAsync(key, serializedValues).ConfigureAwait(false);
         }
 
         public async Task Set<T>(string key, T value, TimeSpan? expiry = null)
         {
             var serializedValue = _serializer.Serialize(value);
-            await _database.StringSetAsync(key, serializedValue, expiry);
+            await _database.StringSetAsync(key, serializedValue, expiry).ConfigureAwait(false);
         }
 
         public async Task Delete(string key)
         {
-            await _database.KeyDeleteAsync(key);
+            await _database.KeyDeleteAsync(key).ConfigureAwait(false);
         }
 
         public async Task DeleteMultiple(string[] keys)
         {
-            await _database.KeyDeleteAsync(keys.Select(key => new RedisKey(key)).ToArray());
+            await _database.KeyDeleteAsync(keys.Select(key => new RedisKey(key)).ToArray()).ConfigureAwait(false);
         }
 
         public async Task DeleteNamespace(string @namespace)
@@ -109,7 +109,7 @@ namespace Redfish.Services
                     keys.Add(key);
                 }
 
-                await _database.KeyDeleteAsync(keys.ToArray());
+                await _database.KeyDeleteAsync(keys.ToArray()).ConfigureAwait(false);
             }
         }
 
@@ -117,7 +117,7 @@ namespace Redfish.Services
         {
             foreach (var endpoint in _multiplexer.GetEndPoints())
             {
-                await _multiplexer.GetServer(endpoint).FlushDatabaseAsync();
+                await _multiplexer.GetServer(endpoint).FlushDatabaseAsync().ConfigureAwait(false);
             }
         }
     }

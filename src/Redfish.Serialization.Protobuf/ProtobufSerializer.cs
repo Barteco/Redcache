@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Redfish.Serialization.Protobuf
 {
-    class ProtobufSerializer : IRedfishSerializer
+    internal class ProtobufSerializer : IRedfishSerializer
     {
         public TValue Deserialize<TValue>(RedisValue cached)
         {

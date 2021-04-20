@@ -22,7 +22,7 @@ namespace Redfish.Services
         public async Task Publish<T>(string channel, T message)
         {
             var json = _serializer.Serialize(message);
-            await _database.PublishAsync(channel, json);
+            await _database.PublishAsync(channel, json).ConfigureAwait(false);
         }
 
         public async Task Subscribe<T>(string channel, Action<T> handler)
@@ -31,12 +31,12 @@ namespace Redfish.Services
             {
                 var message = _serializer.Deserialize<T>(value);
                 handler(message);
-            });
+            }).ConfigureAwait(false);
         }
 
         public async Task Unsubscribe(string channel)
         {
-            await _subscriber.UnsubscribeAsync(channel);
+            await _subscriber.UnsubscribeAsync(channel).ConfigureAwait(false);
         }
     }
 }
