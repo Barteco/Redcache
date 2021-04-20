@@ -4,7 +4,7 @@ namespace Redcache.Internal
 {
     static class ConfigurationOptionsBuilder
     {
-        public static ConfigurationOptions Build(RedisOptions redisOptions)
+        public static ConfigurationOptions Build(RedcacheOptions redisOptions)
         {
             var configurationOptions = ConfigurationOptions.Parse(redisOptions.ConnectionString);
             configurationOptions.AllowAdmin = true;

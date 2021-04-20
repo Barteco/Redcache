@@ -1,6 +1,6 @@
 ﻿namespace Redcache
 {
-    public class RedisOptions
+    public class RedcacheOptions
     {
         public string ConnectionString { get; set; }
         public int DefaultDatabase { get; set; }

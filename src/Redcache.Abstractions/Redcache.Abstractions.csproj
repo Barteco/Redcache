@@ -13,8 +13,4 @@
     <PackageReference Include="StackExchange.Redis" Version="2.2.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\assets\logo.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
 </Project>

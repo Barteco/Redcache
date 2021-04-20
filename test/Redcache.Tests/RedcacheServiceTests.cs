@@ -10,14 +10,14 @@ using Xunit;
 
 namespace Redcache.Tests
 {
-    public class RedcacheServiceTests : IClassFixture<RedisFixture>
+    public class RedcacheServiceTests : IClassFixture<RedcacheFixture>
     {
-        private readonly RedisFixture _fixture;
+        private readonly RedcacheFixture _fixture;
         private readonly PersonFaker _faker;
         private readonly SystemTextJsonSerializer _jsonSerializer;
         private readonly ProtobufSerializer _protobufSerializer;
 
-        public RedcacheServiceTests(RedisFixture fixture)
+        public RedcacheServiceTests(RedcacheFixture fixture)
         {
             _fixture = fixture;
             _faker = new PersonFaker();

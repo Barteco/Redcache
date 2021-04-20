@@ -12,7 +12,7 @@ namespace Redcache.Tests.Fixtures
         public RedisFixture()
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var redisOptions = config.GetSection("Redis").Get<RedisOptions>();
+            var redisOptions = config.GetSection("Redis").Get<RedcacheOptions>();
             var configurationOptions = ConfigurationOptionsBuilder.Build(redisOptions);
             Multiplexer = ConnectionMultiplexer.Connect(configurationOptions);
         }
