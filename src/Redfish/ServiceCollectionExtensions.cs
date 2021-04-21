@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Redfish.Internal;
 using Redfish.Services;
 using StackExchange.Redis;
@@ -7,11 +8,12 @@ namespace Redfish
 {
     public static class ServiceCollectionExtensions
     {
-        public static IRedfishServiceCollectionBuilder AddRedis(this IServiceCollection services, RedisOptions redisOptions)
+        public static IRedfishServiceCollectionBuilder AddRedfish(this IServiceCollection services, IConfiguration configuration)
         {
             var builder = new RedfishServiceCollectionBuilder(services);
 
-            var configurationOptions = RedisOptionsBuilder.Build(redisOptions);
+            var redisOptions = configuration.Get<RedisOptions>();
+            var configurationOptions = RedisOptionsBuilder.BuildConfigurationOptions(redisOptions);
             builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configurationOptions));
 
             return builder;

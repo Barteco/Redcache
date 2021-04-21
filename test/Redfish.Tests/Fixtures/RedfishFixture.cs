@@ -13,7 +13,7 @@ namespace Redfish.Tests.Fixtures
         {
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var redisOptions = config.GetSection("Redis").Get<RedisOptions>();
-            var configurationOptions = RedisOptionsBuilder.Build(redisOptions);
+            var configurationOptions = RedisOptionsBuilder.BuildConfigurationOptions(redisOptions);
             Multiplexer = ConnectionMultiplexer.Connect(configurationOptions);
         }
 

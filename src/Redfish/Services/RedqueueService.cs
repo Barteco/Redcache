@@ -21,8 +21,8 @@ namespace Redfish.Services
 
         public async Task Publish<T>(string channel, T message)
         {
-            var json = _serializer.Serialize(message);
-            await _database.PublishAsync(channel, json).ConfigureAwait(false);
+            var value = _serializer.Serialize(message);
+            await _database.PublishAsync(channel, value).ConfigureAwait(false);
         }
 
         public async Task Subscribe<T>(string channel, Action<T> handler)
