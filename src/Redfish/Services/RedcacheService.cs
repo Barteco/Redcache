@@ -24,7 +24,7 @@ namespace Redfish.Services
             return await _database.KeyExistsAsync(key).ConfigureAwait(false);
         }
 
-        public async Task<Optional<T>> Get<T>(string key, TimeSpan? expiry = null)
+        public async Task<Optional<T>> Get<T>(string key)
         {
             var cachedValue = await _database.StringGetAsync(key).ConfigureAwait(false);
             if (cachedValue.HasValue)
