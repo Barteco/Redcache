@@ -14,20 +14,10 @@ namespace Redfish
 
             var redisOptions = configuration.Get<RedisOptions>();
             var configurationOptions = RedisOptionsBuilder.BuildConfigurationOptions(redisOptions);
-            builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configurationOptions));
+            var connectionMultiplexer = ConnectionMultiplexer.Connect(configurationOptions);
 
-            return builder;
-        }
-
-        public static IRedfishServiceCollectionBuilder AddRedcache(this IRedfishServiceCollectionBuilder builder)
-        {
+            builder.Services.AddSingleton<IConnectionMultiplexer>(connectionMultiplexer);
             builder.Services.AddScoped<IRedcache, RedcacheService>();
-
-            return builder;
-        }
-
-        public static IRedfishServiceCollectionBuilder AddRedqueue(this IRedfishServiceCollectionBuilder builder)
-        {
             builder.Services.AddScoped<IRedqueue, RedqueueService>();
 
             return builder;
