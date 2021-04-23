@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
-    <None Include="$(SolutionDir)/assets/logo.png" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)/assets/logo.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
