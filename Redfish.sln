@@ -19,8 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{FA52
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{94485132-00FD-4C43-84D7-4358F5C70915}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-push.yml = .github\workflows\build-and-push.yml
 		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\push.yml = .github\workflows\push.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish", "src\Redfish\Redfish.csproj", "{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}"
@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Tests", "test\Redfi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Serialization.Protobuf", "src\Redfish.Serialization.Protobuf\Redfish.Serialization.Protobuf.csproj", "{E19B4AED-7181-46A9-B1A5-596717D10A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Logging", "src\Redfish.Logging\Redfish.Logging.csproj", "{C9A5FAAF-39BA-4684-B8B1-D38036E25685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Logging", "src\Redfish.Logging\Redfish.Logging.csproj", "{C9A5FAAF-39BA-4684-B8B1-D38036E25685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
