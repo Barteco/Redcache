@@ -64,6 +64,38 @@ namespace Redfish.Tests
         }
 
         [Fact]
+        public async Task Log_GetSet_WithAbsoluteExpiration()
+        {
+            // Arrange
+            var expiration = DateTime.UtcNow.AddDays(1);
+            _redcache.GetOrSet(Arg.Any<string>(), Arg.Any<Func<string>>(), Arg.Any<DateTime>()).Returns("value");
+
+            // Act
+            var result = await _redcacheDecorator.GetOrSet("key", () => "value", expiration);
+
+            // Assert
+            _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<string>());
+            _redcache.Received().GetOrSet(Arg.Is("key"), Arg.Any<Func<string>>(), Arg.Is(expiration)).Wait();
+            result.Should().Be("value");
+        }
+
+        [Fact]
+        public async Task Log_GetSet_WithAbsoluteOffsetExpiration()
+        {
+            // Arrange
+            var expiration = DateTimeOffset.UtcNow.AddDays(1);
+            _redcache.GetOrSet(Arg.Any<string>(), Arg.Any<Func<string>>(), Arg.Any<DateTimeOffset>()).Returns("value");
+
+            // Act
+            var result = await _redcacheDecorator.GetOrSet("key", () => "value", expiration);
+
+            // Assert
+            _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<string>());
+            _redcache.Received().GetOrSet(Arg.Is("key"), Arg.Any<Func<string>>(), Arg.Is(expiration)).Wait();
+            result.Should().Be("value");
+        }
+
+        [Fact]
         public async Task Log_GetSet()
         {
             // Arrange
@@ -113,6 +145,34 @@ namespace Redfish.Tests
             // Assert
             _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<string>());
             _redcache.Received().AppendList(Arg.Is("key"), Arg.Is<string[]>(x => x.SequenceEqual(new[] { "value1", "value2" }))).Wait();
+        }
+
+        [Fact]
+        public async Task Log_Set_WithAbsoluteExiration()
+        {
+            // Arrange
+            var expiration = DateTime.UtcNow.AddDays(1);
+
+            // Act
+            await _redcacheDecorator.Set("key", "value", expiration);
+
+            // Assert
+            _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<string>());
+            _redcache.Received().Set(Arg.Is("key"), Arg.Is("value"), Arg.Is(expiration)).Wait();
+        }
+
+        [Fact]
+        public async Task Log_Set_WithAbsoluteOffsetExiration()
+        {
+            // Arrange
+            var expiration = DateTimeOffset.UtcNow.AddDays(1);
+
+            // Act
+            await _redcacheDecorator.Set("key", "value", expiration);
+
+            // Assert
+            _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<string>());
+            _redcache.Received().Set(Arg.Is("key"), Arg.Is("value"), Arg.Is(expiration)).Wait();
         }
 
         [Fact]

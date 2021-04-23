@@ -54,7 +54,7 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Exists_WhenAccessingKeyBeforeExpiry_ReturnsItsTrue()
+        public async Task Exists_WhenAccessingKeyBeforeExpiration_ReturnsItsTrue()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
@@ -70,7 +70,7 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Exists_WhenAccessingKeyAfterExpiry_ReturnsFalse()
+        public async Task Exists_WhenAccessingKeyAfterExpiration_ReturnsFalse()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
@@ -114,7 +114,7 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Get_WhenAccessingExistentKey_ReturnsItsValue()
+        public async Task Set_Then_Get_WhenAccessingKey_ReturnsItsValue()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
@@ -159,7 +159,49 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Get_WhenAccessingKeyBeforeExpiry_ReturnsItsValue()
+        public void GetOrSet_Throws_WhenPastExpirationDate()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.GetOrSet(key, () => "value", DateTime.UtcNow.AddDays(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration date must be a future date*");
+        }
+
+        [Fact]
+        public void GetOrSet_Throws_WhenPastOffsetExpirationDate()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.GetOrSet(key, () => "value", DateTimeOffset.UtcNow.AddDays(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration date must be a future date*");
+        }
+
+        [Fact]
+        public void GetOrSet_Throws_WhenNegativeSlidingExpiration()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.GetOrSet(key, () => "value", TimeSpan.FromSeconds(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration must be a positive value*");
+        }
+
+        [Fact]
+        public async Task Set_Then_Get_WhenAccessingKeyBeforeExpiration_ReturnsItsValue()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
@@ -175,7 +217,7 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Get_WhenAccessingKeyAfterExpiry_ReturnsNull()
+        public async Task Set_Then_Get_WhenAccessingKeyAfterExpiration_ReturnsNull()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
@@ -243,6 +285,48 @@ namespace Redfish.Tests
 
             // Assert
             cachedList.Should().Equal(expectedList);
+        }
+
+        [Fact]
+        public void Set_Throws_WhenPastExpirationDate()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.Set(key, "value", DateTime.UtcNow.AddDays(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration date must be a future date*");
+        }
+
+        [Fact]
+        public void Set_Throws_WhenPastOffsetExpirationDate()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.Set(key, "value", DateTimeOffset.UtcNow.AddDays(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration date must be a future date*");
+        }
+
+        [Fact]
+        public void Set_Throws_WhenNegativeSlidingExpiration()
+        {
+            // Arrange
+            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var key = _fixture.GetRandomKey();
+
+            // Act
+            Func<Task> action = async () => await redcache.Set(key, "value", TimeSpan.FromSeconds(-1));
+
+            // Assert
+            action.Should().Throw<ArgumentException>().WithMessage("Expiration must be a positive value*");
         }
 
         [Fact]

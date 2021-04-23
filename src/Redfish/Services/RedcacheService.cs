@@ -34,8 +34,35 @@ namespace Redfish.Services
             return Optional<T>.None();
         }
 
-        public async Task<T> GetOrSet<T>(string key, Func<T> setter, TimeSpan? expiry = null)
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, DateTime absoluteExpiration)
         {
+            if (absoluteExpiration < DateTime.UtcNow)
+            {
+                throw new ArgumentOutOfRangeException(nameof(absoluteExpiration), "Expiration date must be a future date");
+            }
+
+            var slidingExpiration = absoluteExpiration - DateTime.UtcNow;
+            return await GetOrSet(key, setter, slidingExpiration).ConfigureAwait(false);
+        }
+
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, DateTimeOffset absoluteExpiration)
+        {
+            if (absoluteExpiration < DateTime.UtcNow)
+            {
+                throw new ArgumentOutOfRangeException(nameof(absoluteExpiration), "Expiration date must be a future date");
+            }
+
+            var slidingExpiration = absoluteExpiration - DateTime.UtcNow;
+            return await GetOrSet(key, setter, slidingExpiration).ConfigureAwait(false);
+        }
+
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, TimeSpan? slidingExpiration = null)
+        {
+            if (slidingExpiration < TimeSpan.Zero)
+            {
+                throw new ArgumentOutOfRangeException(nameof(slidingExpiration), "Expiration must be a positive value");
+            }
+
             var cachedValue = await _database.StringGetAsync(key).ConfigureAwait(false);
             if (cachedValue.HasValue)
             {
@@ -43,7 +70,7 @@ namespace Redfish.Services
             }
 
             var value = setter();
-            await Set(key, value, expiry).ConfigureAwait(false);
+            await Set(key, value, slidingExpiration).ConfigureAwait(false);
             return value;
         }
 
@@ -82,10 +109,37 @@ namespace Redfish.Services
             await _database.ListRightPushAsync(key, serializedValues).ConfigureAwait(false);
         }
 
-        public async Task Set<T>(string key, T value, TimeSpan? expiry = null)
+        public async Task Set<T>(string key, T value, DateTime absoluteExpiration)
         {
+            if (absoluteExpiration < DateTime.UtcNow)
+            {
+                throw new ArgumentOutOfRangeException(nameof(absoluteExpiration), "Expiration date must be a future date");
+            }
+
+            var slidingExpiration = absoluteExpiration - DateTime.UtcNow;
+            await Set(key, value, slidingExpiration).ConfigureAwait(false);
+        }
+
+        public async Task Set<T>(string key, T value, DateTimeOffset absoluteExpiration)
+        {
+            if (absoluteExpiration < DateTime.UtcNow)
+            {
+                throw new ArgumentOutOfRangeException(nameof(absoluteExpiration), "Expiration date must be a future date");
+            }
+
+            var slidingExpiration = absoluteExpiration - DateTime.UtcNow;
+            await Set(key, value, slidingExpiration).ConfigureAwait(false);
+        }
+
+        public async Task Set<T>(string key, T value, TimeSpan? slidingExpiration = null)
+        {
+            if (slidingExpiration < TimeSpan.Zero)
+            {
+                throw new ArgumentOutOfRangeException(nameof(slidingExpiration), "Expiration must be a positive value");
+            }
+
             var serializedValue = _serializer.Serialize(value);
-            await _database.StringSetAsync(key, serializedValue, expiry).ConfigureAwait(false);
+            await _database.StringSetAsync(key, serializedValue, slidingExpiration).ConfigureAwait(false);
         }
 
         public async Task Delete(string key)

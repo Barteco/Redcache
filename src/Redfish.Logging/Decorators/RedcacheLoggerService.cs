@@ -54,18 +54,58 @@ namespace Redfish.Decorators
             }
         }
 
-        public async Task<T> GetOrSet<T>(string key, Func<T> setter, TimeSpan? expiry = null)
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, DateTime absoluteExpiration)
         {
             using var scope = _logger.BeginScope(new()
             {
-                ["Action"] = "GetSet",
+                ["Action"] = "GetOrSet",
                 ["Key"] = key,
-                ["Expiry"] = expiry
+                ["AbsoluteExpiration"] = absoluteExpiration
             });
 
             try
             {
-                return await _redqueue.GetOrSet(key, setter, expiry).ConfigureAwait(false);
+                return await _redqueue.GetOrSet(key, setter, absoluteExpiration).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                scope.Catch(exception);
+                throw;
+            }
+        }
+
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, DateTimeOffset absoluteExpiration)
+        {
+            using var scope = _logger.BeginScope(new()
+            {
+                ["Action"] = "GetOrSet",
+                ["Key"] = key,
+                ["AbsoluteExpiration"] = absoluteExpiration
+            });
+
+            try
+            {
+                return await _redqueue.GetOrSet(key, setter, absoluteExpiration).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                scope.Catch(exception);
+                throw;
+            }
+        }
+
+        public async Task<T> GetOrSet<T>(string key, Func<T> setter, TimeSpan? slidingExpiration = null)
+        {
+            using var scope = _logger.BeginScope(new()
+            {
+                ["Action"] = "GetOrSet",
+                ["Key"] = key,
+                ["SlidingExpiration"] = slidingExpiration
+            });
+
+            try
+            {
+                return await _redqueue.GetOrSet(key, setter, slidingExpiration).ConfigureAwait(false);
             }
             catch (Exception exception)
             {
@@ -134,19 +174,61 @@ namespace Redfish.Decorators
             }
         }
 
-        public async Task Set<T>(string key, T value, TimeSpan? expiry = null)
+        public async Task Set<T>(string key, T value, DateTime absoluteExpiration)
         {
             using var scope = _logger.BeginScope(new()
             {
                 ["Action"] = "Set",
                 ["Key"] = key,
                 ["Value"] = value,
-                ["Expiry"] = expiry
+                ["AbsoluteExpiration"] = absoluteExpiration
             });
 
             try
             {
-                await _redqueue.Set(key, value, expiry).ConfigureAwait(false);
+                await _redqueue.Set(key, value, absoluteExpiration).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                scope.Catch(exception);
+                throw;
+            }
+        }
+
+        public async Task Set<T>(string key, T value, DateTimeOffset absoluteExpiration)
+        {
+            using var scope = _logger.BeginScope(new()
+            {
+                ["Action"] = "Set",
+                ["Key"] = key,
+                ["Value"] = value,
+                ["AbsoluteExpiration"] = absoluteExpiration
+            });
+
+            try
+            {
+                await _redqueue.Set(key, value, absoluteExpiration).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                scope.Catch(exception);
+                throw;
+            }
+        }
+
+        public async Task Set<T>(string key, T value, TimeSpan? slidingExpiration = null)
+        {
+            using var scope = _logger.BeginScope(new()
+            {
+                ["Action"] = "Set",
+                ["Key"] = key,
+                ["Value"] = value,
+                ["SlidingExpiration"] = slidingExpiration
+            });
+
+            try
+            {
+                await _redqueue.Set(key, value, slidingExpiration).ConfigureAwait(false);
             }
             catch (Exception exception)
             {
