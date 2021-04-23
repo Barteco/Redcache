@@ -8,7 +8,7 @@ namespace Redfish
     {
         Task<bool> Exists(string key);
         Task<Optional<T>> Get<T>(string key);
-        Task<T> Get<T>(string key, Func<T> setter, TimeSpan? expiry = null);
+        Task<T> GetOrSet<T>(string key, Func<T> setter, TimeSpan? expiry = null);
         Task<List<T>> GetList<T>(string key, Range? range = null);
         Task AppendList<T>(string key, T value);
         Task AppendList<T>(string key, T[] values);

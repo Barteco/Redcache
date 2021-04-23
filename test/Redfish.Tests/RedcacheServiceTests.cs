@@ -129,29 +129,29 @@ namespace Redfish.Tests
         }
 
         [Fact]
-        public async Task Get_WhenAccessingNonexistentKeyWithSetter_ReturnsSetterValue()
+        public async Task GetOrSet_WhenAccessingNonexistentKeyWithSetter_ReturnsSetterValue()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
             var key = _fixture.GetRandomKey();
 
             // Act
-            var cachedValue = await redcache.Get(key, () => "value");
+            var cachedValue = await redcache.GetOrSet(key, () => "value");
 
             // Assert
             cachedValue.Should().Be("value");
         }
 
         [Fact]
-        public async Task Get_WhenUsedMultipleTimesWithDifferentSetters_ReturnsFirstValue()
+        public async Task GetOrSet_WhenUsedMultipleTimesWithDifferentSetters_ReturnsFirstValue()
         {
             // Arrange
             var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
             var key = _fixture.GetRandomKey();
 
             // Act
-            var firstCachedValue = await redcache.Get(key, () => "value1");
-            var secondCachedValue = await redcache.Get(key, () => "value2");
+            var firstCachedValue = await redcache.GetOrSet(key, () => "value1");
+            var secondCachedValue = await redcache.GetOrSet(key, () => "value2");
 
             // Assert
             firstCachedValue.Should().Be("value1");
