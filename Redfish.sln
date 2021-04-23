@@ -23,17 +23,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\push.yml = .github\workflows\push.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish", "src\Redfish\Redfish.csproj", "{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish", "src\Redfish\Redfish.csproj", "{28DB43DA-F012-461C-AD4D-CF0406F4EE3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Serialization.SystemTextJson", "src\Redfish.Serialization.SystemTextJson\Redfish.Serialization.SystemTextJson.csproj", "{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Serialization.SystemTextJson", "src\Redfish.Serialization.SystemTextJson\Redfish.Serialization.SystemTextJson.csproj", "{4B4E2EB5-BE97-44E4-AAF0-9D5484CE51E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Abstractions", "src\Redfish.Abstractions\Redfish.Abstractions.csproj", "{80DA793F-601F-43D3-B5CD-605A2E5828C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Abstractions", "src\Redfish.Abstractions\Redfish.Abstractions.csproj", "{80DA793F-601F-43D3-B5CD-605A2E5828C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{66BEB7AF-F6D2-43D7-A214-567D2821BF3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Tests", "test\Redfish.Tests\Redfish.Tests.csproj", "{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Tests", "test\Redfish.Tests\Redfish.Tests.csproj", "{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Serialization.Protobuf", "src\Redfish.Serialization.Protobuf\Redfish.Serialization.Protobuf.csproj", "{E19B4AED-7181-46A9-B1A5-596717D10A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Serialization.Protobuf", "src\Redfish.Serialization.Protobuf\Redfish.Serialization.Protobuf.csproj", "{E19B4AED-7181-46A9-B1A5-596717D10A11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Logging", "src\Redfish.Logging\Redfish.Logging.csproj", "{C9A5FAAF-39BA-4684-B8B1-D38036E25685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E19B4AED-7181-46A9-B1A5-596717D10A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A5FAAF-39BA-4684-B8B1-D38036E25685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A5FAAF-39BA-4684-B8B1-D38036E25685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A5FAAF-39BA-4684-B8B1-D38036E25685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A5FAAF-39BA-4684-B8B1-D38036E25685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{80DA793F-601F-43D3-B5CD-605A2E5828C4} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 		{E6AC51E1-B14C-4899-8F1C-DCCE0784D4AF} = {66BEB7AF-F6D2-43D7-A214-567D2821BF3C}
 		{E19B4AED-7181-46A9-B1A5-596717D10A11} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{C9A5FAAF-39BA-4684-B8B1-D38036E25685} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {592FC598-8233-4133-B1A4-3F0B66C0EAC1}
