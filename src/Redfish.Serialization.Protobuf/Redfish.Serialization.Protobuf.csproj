@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Redfish</RootNamespace>
     <Description>Protobuf serializer for Redfish toolkit</Description>
     <PackageTags>redis caching protobuf serializer</PackageTags>
-    <RootNamespace>Redfish</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

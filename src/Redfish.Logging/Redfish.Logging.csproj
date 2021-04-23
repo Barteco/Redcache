@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Redfish</RootNamespace>
     <Description>Logging support for Redfish toolkit</Description>
     <PackageTags>redis cache pubsub logging</PackageTags>
