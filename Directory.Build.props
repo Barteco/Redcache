@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Authors>Barteco</Authors>
     <Copyright>Copyright © Barteco</Copyright>
