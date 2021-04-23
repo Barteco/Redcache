@@ -17,7 +17,11 @@ jobs:
     steps:
     - uses: zhulik/redis-action@1.1.0
     - uses: actions/checkout@v2
-    - name: Setup .NET
+    - name: Setup .NET 3.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Setup .NET 5
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
@@ -27,5 +31,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: 'Push'
+    - name: 'Push to nuget'
       run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.BARTECO_NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
