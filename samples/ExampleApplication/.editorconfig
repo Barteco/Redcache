@@ -1,0 +1,8 @@
+﻿[*.cs]
+
+# CA2007: Consider calling ConfigureAwait on the awaited task
+dotnet_diagnostic.CA2007.severity = none
+# RCS1090: Add call to 'ConfigureAwait'
+dotnet_diagnostic.RCS1090.severity = none
+# IDE0005	Using directive is unnecessary
+dotnet_diagnostic.IDE0005.severity = none

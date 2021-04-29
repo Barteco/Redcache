@@ -1,6 +1,6 @@
 <Project>
   
-  <PropertyGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains(src)) == 'true'">
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Version>0.0.5</Version>
@@ -18,11 +18,11 @@
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
+  <ItemGroup Condition="$(MSBuildProjectDirectory.Contains(src)) == 'true'">
     <None Include="$(SolutionDir)/assets/logo.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
   
-  <ItemGroup Condition="'$(ProjectName)'!='Redfish.Tests'">
+  <ItemGroup Condition="$(MSBuildProjectDirectory.Contains(src)) == 'true'">
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>Redfish.Tests</_Parameter1>
     </AssemblyAttribute>

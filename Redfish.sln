@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redfish.Logging", "src\Redf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redfish.Serialization.NewtonsoftJson", "src\Redfish.Serialization.NewtonsoftJson\Redfish.Serialization.NewtonsoftJson.csproj", "{03A1EC69-29F0-42D5-905D-F9DEF5B07315}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FCFD622B-CFA1-4DFC-922C-8D9394D885B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApplication", "samples\ExampleApplication\ExampleApplication.csproj", "{F084DC5A-733A-405B-852F-C9143ADFA946}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{03A1EC69-29F0-42D5-905D-F9DEF5B07315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A1EC69-29F0-42D5-905D-F9DEF5B07315}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A1EC69-29F0-42D5-905D-F9DEF5B07315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F084DC5A-733A-405B-852F-C9143ADFA946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F084DC5A-733A-405B-852F-C9143ADFA946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F084DC5A-733A-405B-852F-C9143ADFA946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F084DC5A-733A-405B-852F-C9143ADFA946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,7 @@ Global
 		{E19B4AED-7181-46A9-B1A5-596717D10A11} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 		{C9A5FAAF-39BA-4684-B8B1-D38036E25685} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
 		{03A1EC69-29F0-42D5-905D-F9DEF5B07315} = {B4F65A9E-3428-45D0-90C9-011C621D6556}
+		{F084DC5A-733A-405B-852F-C9143ADFA946} = {FCFD622B-CFA1-4DFC-922C-8D9394D885B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {592FC598-8233-4133-B1A4-3F0B66C0EAC1}
