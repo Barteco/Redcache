@@ -6,7 +6,7 @@ namespace Redfish
 {
     public static class ServiceCollectionExtensions
     {
-        public static IRedfishServiceCollectionBuilder AddRedcacheLogging(this IRedfishServiceCollectionBuilder builder, IConfiguration options)
+        public static IRedfishServiceCollectionBuilder AddLogging(this IRedfishServiceCollectionBuilder builder, IConfiguration options)
         {
             builder.Services.Configure<LoggingOptions>(options);
             builder.Services.Decorate<IRedcache, RedcacheLoggerService>();

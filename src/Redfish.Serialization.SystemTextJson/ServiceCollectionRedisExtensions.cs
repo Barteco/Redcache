@@ -4,7 +4,7 @@ namespace Redfish
 {
     public static class ServiceCollectionRedisExtensions
     {
-        public static IRedfishServiceCollectionBuilder AddRedisJsonSerializer(this IRedfishServiceCollectionBuilder builder)
+        public static IRedfishServiceCollectionBuilder AddSystemTextJsonSerializer(this IRedfishServiceCollectionBuilder builder)
         {
             builder.Services.AddScoped<IRedfishSerializer, SystemTextJsonSerializer>();
 
