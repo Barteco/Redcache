@@ -7,10 +7,10 @@ namespace Redfish.Internal
 {
     internal class RedfishLogger : IRedfishLogger
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<RedfishLogger> _logger;
         private readonly LoggingOptions _options;
 
-        public RedfishLogger(ILogger logger, IOptions<LoggingOptions> options)
+        public RedfishLogger(ILogger<RedfishLogger> logger, IOptions<LoggingOptions> options)
         {
             _logger = logger;
             _options = options.Value;
