@@ -2,7 +2,7 @@
 
 namespace Redfish
 {
-    public static class ServiceCollectionRedisExtensions
+    public static class ServiceCollectionExtensions
     {
         public static IRedfishServiceCollectionBuilder AddSystemTextJsonSerializer(this IRedfishServiceCollectionBuilder builder)
         {

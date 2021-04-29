@@ -15,6 +15,8 @@ Add one of the following serialization packages (see "Choosing serialization met
 
 `dotnet add package Redfish.Serialization.SystemTextJson`
 
+`dotnet add package Redfish.Serialization.NewtonsoftJson`
+
 Optionally, add:
 
 `dotnet add package Redfish.Logging`
@@ -49,7 +51,7 @@ public void ConfigureServices(IServiceCollection services)
     // ...
 
     services.AddRedfish(Configuration.GetSection("Redfish:Redis"))
-        .AddProtobufSerializer() // or .AddSystemTextJsonSerializer()
+        .AddProtobufSerializer() // or any other chosen provider
         .AddLogging(Configuration.GetSection("Redfish:Logging")); // optional, only when using logging 
       
     // ...
@@ -125,7 +127,7 @@ public class ChannelSubscriber : BackgroundService
 
 ## 3. Choosing serialization method
 
-For now, Redfish supports two methods of value serialization in Redis.
+For now, Redfish supports three methods of value serialization in Redis.
 
 ### 3.1. Protobuf
 
@@ -145,13 +147,48 @@ public class Person
 
 This format offers significant storage size reduction and faster serialization, but lags behind in readability when browsing Redis with external tools, like Redis Desktop Manager
 
+#### 3.1.1. Installation
+
+`dotnet add package Redfish.Serialization.Protobuf`
+
+#### 3.1.2. Registration
+
+```
+services.AddRedfish(...)
+    .AddProtobufSerializer();
+```
+
+
+
 ### 3.2. System.Text.Json
 
-Using `System.Text.Json` requires no further configuration
+This method uses `System.Text.Json`, default Microsoft's Json serializer for ASP.NET Core
+
+#### 3.2.1. Installation
+
+`dotnet add package Redfish.Serialization.SystemTextJson`
+
+#### 3.2.2. Registration
+
+```
+services.AddRedfish(...)
+    .AddSystemTextJsonSerializer();
+```
 
 ### 3.3. Newtonsoft.Json
 
-Support planned
+This method uses highly popular [Json.NET](https://github.com/JamesNK/Newtonsoft.Json) as Json serializer
+
+#### 3.3.1. Installation
+
+`dotnet add package Redfish.Serialization.NewtonsoftJson`
+
+#### 3.3.2. Registration
+
+```
+services.AddRedfish(...)
+    .AddNewtonsoftJsonSerializer();
+```
 
 ## 4. Logging
 

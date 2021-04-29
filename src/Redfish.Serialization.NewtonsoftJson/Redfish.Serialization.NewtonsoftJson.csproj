@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Redfish</RootNamespace>
+    <Description>Newtonsoft.Json serializer for Redfish toolkit</Description>
+    <PackageTags>redis caching json serializer</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Redfish.Abstractions\Redfish.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

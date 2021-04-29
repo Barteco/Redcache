@@ -11,18 +11,18 @@ namespace Redfish.Tests
     public class RedqueueServiceTests : IClassFixture<RedfishFixture>
     {
         private readonly RedfishFixture _fixture;
-        private readonly SystemTextJsonSerializer _jsonSerializer;
+        private readonly SystemTextJsonSerializer _serializer;
 
         public RedqueueServiceTests(RedfishFixture fixture)
         {
             _fixture = fixture;
-            _jsonSerializer = new SystemTextJsonSerializer();
+            _serializer = new SystemTextJsonSerializer();
         }
 
         [Fact]
         public async Task Subscribe_WhenMessageIsPublished_ExecutesHandler()
         {
-            var mq = new RedqueueService(_fixture.Multiplexer, _jsonSerializer);
+            var mq = new RedqueueService(_fixture.Multiplexer, _serializer);
             var channel = _fixture.GetRandomKey();
             int counter = 0;
 
@@ -36,7 +36,7 @@ namespace Redfish.Tests
         [Fact]
         public async Task Subscribe_WhenMultipleMessagesArePublished_ExecutesHandlerMultipleTimes()
         {
-            var mq = new RedqueueService(_fixture.Multiplexer, _jsonSerializer);
+            var mq = new RedqueueService(_fixture.Multiplexer, _serializer);
             var channel = _fixture.GetRandomKey();
             int counter = 0;
 
@@ -52,7 +52,7 @@ namespace Redfish.Tests
         [Fact]
         public async Task Subscribe_WhenMessageIsPublishedBeforeSubscription_DoesNotExecuteHandler()
         {
-            var mq = new RedqueueService(_fixture.Multiplexer, _jsonSerializer);
+            var mq = new RedqueueService(_fixture.Multiplexer, _serializer);
             var channel = _fixture.GetRandomKey();
             int counter = 0;
 
@@ -66,7 +66,7 @@ namespace Redfish.Tests
         [Fact]
         public async Task Unsubscribe_StopsExecutingHandler()
         {
-            var mq = new RedqueueService(_fixture.Multiplexer, _jsonSerializer);
+            var mq = new RedqueueService(_fixture.Multiplexer, _serializer);
             var channel = _fixture.GetRandomKey();
             int counter = 0;
 

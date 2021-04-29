@@ -1,6 +1,5 @@
 using FluentAssertions;
 using Redfish.Services;
-using Redfish.Tests.Fakes;
 using Redfish.Tests.Fixtures;
 using System;
 using System.Linq;
@@ -12,23 +11,19 @@ namespace Redfish.Tests
     public class RedcacheServiceTests : IClassFixture<RedfishFixture>
     {
         private readonly RedfishFixture _fixture;
-        private readonly PersonFaker _faker;
-        private readonly SystemTextJsonSerializer _jsonSerializer;
-        private readonly ProtobufSerializer _protobufSerializer;
+        private readonly SystemTextJsonSerializer _serializer;
 
         public RedcacheServiceTests(RedfishFixture fixture)
         {
             _fixture = fixture;
-            _faker = new PersonFaker();
-            _jsonSerializer = new SystemTextJsonSerializer();
-            _protobufSerializer = new ProtobufSerializer();
+            _serializer = new SystemTextJsonSerializer();
         }
 
         [Fact]
         public async Task Exists_WhenAccessingNonexistentKey_ReturnsFalse()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -42,7 +37,7 @@ namespace Redfish.Tests
         public async Task Exists_WhenAccessingNonexistentKey_ReturnsTrue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -57,7 +52,7 @@ namespace Redfish.Tests
         public async Task Exists_WhenAccessingKeyBeforeExpiration_ReturnsItsTrue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -73,7 +68,7 @@ namespace Redfish.Tests
         public async Task Exists_WhenAccessingKeyAfterExpiration_ReturnsFalse()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -89,7 +84,7 @@ namespace Redfish.Tests
         public async Task Get_WhenAccessingNonexistentKey_ReturnsNull()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -103,7 +98,7 @@ namespace Redfish.Tests
         public async Task Get_WhenAccessingNonexistentValueTypeKey_ReturnsNull()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -117,7 +112,7 @@ namespace Redfish.Tests
         public async Task Set_Then_Get_WhenAccessingKey_ReturnsItsValue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -132,7 +127,7 @@ namespace Redfish.Tests
         public async Task GetOrSet_WhenAccessingNonexistentKeyWithSetter_ReturnsSetterValue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -146,7 +141,7 @@ namespace Redfish.Tests
         public async Task GetOrSet_WhenUsedMultipleTimesWithDifferentSetters_ReturnsFirstValue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -162,7 +157,7 @@ namespace Redfish.Tests
         public void GetOrSet_Throws_WhenPastExpirationDate()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -176,7 +171,7 @@ namespace Redfish.Tests
         public void GetOrSet_Throws_WhenPastOffsetExpirationDate()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -190,7 +185,7 @@ namespace Redfish.Tests
         public void GetOrSet_Throws_WhenNegativeSlidingExpiration()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -204,7 +199,7 @@ namespace Redfish.Tests
         public async Task Set_Then_Get_WhenAccessingKeyBeforeExpiration_ReturnsItsValue()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -220,7 +215,7 @@ namespace Redfish.Tests
         public async Task Set_Then_Get_WhenAccessingKeyAfterExpiration_ReturnsNull()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -236,7 +231,7 @@ namespace Redfish.Tests
         public async Task Append_AddsGivenValueToEndOfList()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -254,7 +249,7 @@ namespace Redfish.Tests
         public async Task Append_WhenMultipleItems_AddsAllGivenValueToEndOfList()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -276,7 +271,7 @@ namespace Redfish.Tests
         public async Task GetList_WhenPagerIsSpecified_ReturnsListPage(int from, int to, int[] expectedList)
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -291,7 +286,7 @@ namespace Redfish.Tests
         public void Set_Throws_WhenPastExpirationDate()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -305,7 +300,7 @@ namespace Redfish.Tests
         public void Set_Throws_WhenPastOffsetExpirationDate()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -319,7 +314,7 @@ namespace Redfish.Tests
         public void Set_Throws_WhenNegativeSlidingExpiration()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -333,7 +328,7 @@ namespace Redfish.Tests
         public async Task Delete_RemovesKey()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key = _fixture.GetRandomKey();
 
             // Act
@@ -349,7 +344,7 @@ namespace Redfish.Tests
         public async Task DeleteMultiple_RemovesAllGivenKeys()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var key1 = _fixture.GetRandomKey();
             var key2 = _fixture.GetRandomKey();
 
@@ -369,7 +364,7 @@ namespace Redfish.Tests
         public async Task DeleteNamespace_RemovesAllKeysInGivenNamespace()
         {
             // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
+            var redcache = new RedcacheService(_fixture.Multiplexer, _serializer);
             var ns = _fixture.GetRandomNamespace();
             var key1 = _fixture.GetRandomKey(ns);
             var key2 = _fixture.GetRandomKey(ns);
@@ -384,53 +379,6 @@ namespace Redfish.Tests
             // Assert
             key1Exists.Should().BeFalse();
             key2Exists.Should().BeFalse();
-        }
-
-        [Fact]
-        public async Task Set_WhenUsingJsonSerilizer_StoresComplexObject()
-        {
-            // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _jsonSerializer);
-            var key = _fixture.GetRandomKey();
-            var person = _faker.GenerateOne();
-
-            // Act
-            await redcache.Set(key, person);
-            var cached = await redcache.Get<Person>(key);
-
-            // Assert
-            cached.Value.Should().BeEquivalentTo(person);
-        }
-
-        [Fact]
-        public async Task Set_WhenUsingProtobufSerilizer_StoresSimpleObject()
-        {
-            // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _protobufSerializer);
-            var key = _fixture.GetRandomKey();
-
-            // Act
-            await redcache.Set(key, "value");
-            var cached = await redcache.Get<string>(key);
-
-            // Assert
-            cached.Value.Should().Be("value");
-        }
-
-        [Fact]
-        public async Task Set_WhenUsingProtobufSerilizer_StoresComplexObject()
-        {
-            // Arrange
-            var redcache = new RedcacheService(_fixture.Multiplexer, _protobufSerializer);
-            var key = _fixture.GetRandomKey();
-            var person = _faker.GenerateOne();
-
-            // Act
-            await redcache.Set(key, person);
-            var cached = await redcache.Get<Person>(key);
-
-            // Assert
-            cached.Value.Should().BeEquivalentTo(person);
         }
     }
 }
