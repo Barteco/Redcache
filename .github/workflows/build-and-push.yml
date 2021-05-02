@@ -37,4 +37,4 @@ jobs:
         path: reports/test-results.trx
         reporter: dotnet-trx
     - name: 'Push to nuget'
-      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.BARTECO_NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
