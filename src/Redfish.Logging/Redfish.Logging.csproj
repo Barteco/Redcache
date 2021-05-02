@@ -4,6 +4,7 @@
     <RootNamespace>Redfish</RootNamespace>
     <Description>Logging support for Redfish toolkit</Description>
     <PackageTags>redis cache pubsub logging</PackageTags>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

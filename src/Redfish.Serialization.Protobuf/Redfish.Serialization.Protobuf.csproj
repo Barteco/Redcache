@@ -4,6 +4,7 @@
     <RootNamespace>Redfish</RootNamespace>
     <Description>Protobuf serializer for Redfish toolkit</Description>
     <PackageTags>redis caching protobuf serializer</PackageTags>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@
     <RootNamespace>Redfish</RootNamespace>
     <Description>Abstractions for Redfish toolkit</Description>
     <PackageTags>redis cache pubsub abstractions</PackageTags>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@
     <RootNamespace>Redfish</RootNamespace>
     <Description>Newtonsoft.Json serializer for Redfish toolkit</Description>
     <PackageTags>redis caching json serializer</PackageTags>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

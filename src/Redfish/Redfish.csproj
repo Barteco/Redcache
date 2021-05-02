@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Description>Strongly typed toolkit for Redis caching and pub-sub service</Description>
     <PackageTags>redis cache pubsub</PackageTags>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
